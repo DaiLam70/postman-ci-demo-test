@@ -18,5 +18,5 @@ jobs:
         run: npm install -g newman
 
       - name: Run Postman Collection
-        run: newman run "Phase 1.postman_collection" --env-var "BaseUrl=https://fakestoreapi.com"
+        run: newman run "Phase 1.postman_collection" -e dev.postman_environment.json
 
