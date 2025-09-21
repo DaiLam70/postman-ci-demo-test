@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "ecf00cab-e967-4695-bf44-4707ba26c30f",
+		"name": "Phase 1 – Cơ bản (Foundation)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27275064",
+		"_collection_link": "https://warped-equinox-238574.postman.co/workspace/Practice-CI%2FCD~414e179a-ab41-4345-a872-0ed37afe39c3/collection/27275064-ecf00cab-e967-4695-bf44-4707ba26c30f?action=share&source=collection_link&creator=27275064"
+	},
+	"item": [
+		{
+			"name": "Get Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/products",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"pm.environment.set(\"productId\", jsonData.id);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"product lam test\",\r\n  \"price\": 29.99,\r\n  \"description\": \"This is a test product created via Postman\",\r\n  \"image\": \"https://i.pravatar.cc\",\r\n  \"category\": \"test-category\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/products",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": 21,\r\n\"title\": \"string\",\r\n\"price\": 0.1,\r\n\"description\": \"string\",\r\n\"category\": \"string\",\r\n\"image\": \"http://example.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/products/21",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products",
+						"21"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
